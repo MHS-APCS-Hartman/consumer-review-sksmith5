@@ -150,7 +150,7 @@ public class Review {
          {
             return 2;
          }
-         else if(rate <= 0)
+         else if(rate <= 0 && rate > -5)
          {
             return 1;
          }
