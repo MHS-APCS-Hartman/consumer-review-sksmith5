@@ -161,6 +161,64 @@ public class Review {
       
   }
  
+  public static String fakeReview(String fileName)
+  {
+    String file = textToString(fileName);
+    String space = " ";
+    for (int i = 0; i <= file.length(); i++)
+    {
+      String str = file.substring(i,i+1);
+      if(str.equals(space))
+      {
+        if(i+1 == *)
+        {
+          String newWord = str.substring(i+1,space);
+          newWord = newWord.randomAdjective();
+        }
+        else
+        {
+          i++
+        }
+      }
+    }
+    
+    public static String strongerFakeReview(String fileName)
+  {
+    String file = textToString(fileName);
+    String space = " ";
+    for (int i = 0; i <= file.length(); i++)
+    {
+      String str = file.substring(i,i+1);
+      if(str.equals(space))
+      {
+        if(i+1 == *)
+        {
+          String newWord = str.substring(i+1,space);
+          double theVal = sentimentVal(newWord);
+          if(theVal > 0)
+          {
+            newWord = newWord.randomPostiveAdj();
+          }
+          else
+          {
+            newWord = newWord.randomNegativeAdj();
+          }
+        }
+        else
+        {
+          i++
+        }
+      }
+    }
+    
+    
+        
+          
+            
+        
+  
+  
+  
   /**
    * @returns the sentiment value of word as a number between -1 (very negative) to 1 (very positive sentiment) 
    */
