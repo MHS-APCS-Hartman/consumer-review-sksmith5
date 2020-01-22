@@ -171,22 +171,19 @@ public class Review {
       String str = file.substring(i,i+1);
       if(str.equals(space))
       {
-        if(i+1 == *)
+        if(word.substring(0,1) == "*")
         {
-          String newWord = str.substring(i+1,space);
-          newWord = newWord.randomAdjective();
+          String finalOutput = str.substring(word,space);
+          finalOutput = word.randomAdjective();
           word = "";
         }
-        else
-        {
-          word += str;
-        }
+        word = "";
       }
       else
       {
         word += str;
       }
-      return newWord;
+      return finalOutput;
     }
     
     public static String fakeReviewStronger(String fileName)
@@ -199,40 +196,33 @@ public class Review {
       String str = file.substring(i,i+1);
       if(str.equals(space))
       {
-        if(i+1 == *)
+        if(word.substring(0,1) == "*")
         {
-          String newWord = str.substring(i+1,space);
-          double theVal = sentimentVal(newWord);
-          if(theVal > 0)
+          double currVal = sentimentVal(word);
+          if(currVal > 0)
           {
-            newWord = newWord.randomPostiveAdj();
-            word = "";
+            finalOutput = finalOutput.randomPostiveAdj();
+            while(currVal < finalOutput)
+            {
+              finalOutput = finalOutput.randomPostiveAdj();
+            }
           }
           else
           {
-            newWord = newWord.randomNegativeAdj();
+            finalOutput = newWord.randomNegativeAdj();
+            while(currVal < finalOutput)
+            {
+              finalOutput = finalOutput.randomNegativeAdj();
+            }
             word = "";
           }
         }
-        else
-        {
-          word += str;
-        }
-      }
       else
       {
         word += str;
       }
-      return newWord;
+      return finalOutput;
     }
-    
-    
-        
-          
-            
-        
-  
-  
   
   /**
    * @returns the sentiment value of word as a number between -1 (very negative) to 1 (very positive sentiment) 
