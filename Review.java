@@ -165,6 +165,7 @@ public class Review {
   {
     String file = textToString(fileName);
     String space = " ";
+    String word = ""
     for (int i = 0; i <= file.length(); i++)
     {
       String str = file.substring(i,i+1);
@@ -174,18 +175,25 @@ public class Review {
         {
           String newWord = str.substring(i+1,space);
           newWord = newWord.randomAdjective();
+          word = "";
         }
         else
         {
-          i++
+          word += str;
         }
       }
+      else
+      {
+        word += str;
+      }
+      return newWord;
     }
     
-    public static String strongerFakeReview(String fileName)
+    public static String fakeReviewStronger(String fileName)
   {
     String file = textToString(fileName);
     String space = " ";
+    String word = "";
     for (int i = 0; i <= file.length(); i++)
     {
       String str = file.substring(i,i+1);
@@ -198,17 +206,24 @@ public class Review {
           if(theVal > 0)
           {
             newWord = newWord.randomPostiveAdj();
+            word = "";
           }
           else
           {
             newWord = newWord.randomNegativeAdj();
+            word = "";
           }
         }
         else
         {
-          i++
+          word += str;
         }
       }
+      else
+      {
+        word += str;
+      }
+      return newWord;
     }
     
     
