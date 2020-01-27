@@ -137,6 +137,10 @@ public class Review {
   
   public static int starRating(String fileName);
   {
+    /* open file
+    check the total sentiment val of the file opened
+    figure out on a scale of 0-4 where the rate would land
+    returning the star rating given upon the conditions total sentiment val */
       String rate = totalSentiment(fileName);
          if(rate > 10)
          {
@@ -163,6 +167,13 @@ public class Review {
  
   public static String fakeReview(String fileName)
   {
+    /* open file 
+    find the length of the file
+    find where a space is and check to see if their is an * infront of the next word
+    if no * is found reset the word to original word
+    if * is found replace the word with a random adjective 
+    else reset the word and continue on
+    return the adj*/
     String file = textToString(fileName);
     String space = " ";
     String word = "";
@@ -188,6 +199,15 @@ public class Review {
     
     public static String fakeReviewStronger(String fileName)
   {
+      /* open file
+      find the length of the file
+      find the next space
+      if no * infront of the word reset to original word and continue on
+      if * infront of the next word find the val of the word
+      if the word val is bigger than 0 get a positive adj but until the sentiment val is greater than the first positive adj keep repeating
+      if the word val is smaller than 0 get a negative adj but until it's sentiment val is less than the first negative adj keep repeating
+      else just reset the word and continue on
+      return the adj */
     String file = textToString(fileName);
     String space = " ";
     String word = "";
@@ -211,7 +231,7 @@ public class Review {
           else
           {
             finalOutput = newWord.randomNegativeAdj();
-            while(currVal < finalOutput)
+            while(currVal > finalOutput)
             {
               finalOutput = finalOutput.randomNegativeAdj();
             }
