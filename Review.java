@@ -165,59 +165,65 @@ public class Review {
   {
     String file = textToString(fileName);
     String space = " ";
+    String word = "";
     for (int i = 0; i <= file.length(); i++)
     {
       String str = file.substring(i,i+1);
       if(str.equals(space))
       {
-        if(i+1 == *)
+        if(word.substring(0,1) == "*")
         {
-          String newWord = str.substring(i+1,space);
-          newWord = newWord.randomAdjective();
+          String finalOutput = str.substring(word,space);
+          finalOutput = word.randomAdjective();
+          word = "";
         }
-        else
-        {
-          i++
-        }
+        word = "";
       }
+      else
+      {
+        word += str;
+      }
+      return finalOutput;
     }
     
-    public static String strongerFakeReview(String fileName)
+    public static String fakeReviewStronger(String fileName)
   {
     String file = textToString(fileName);
     String space = " ";
+    String word = "";
+    String finalOutput;
     for (int i = 0; i <= file.length(); i++)
     {
       String str = file.substring(i,i+1);
       if(str.equals(space))
       {
-        if(i+1 == *)
+        if(word.substring(0,1) == "*")
         {
-          String newWord = str.substring(i+1,space);
-          double theVal = sentimentVal(newWord);
-          if(theVal > 0)
+          double currVal = sentimentVal(word);
+          if(currVal > 0)
           {
-            newWord = newWord.randomPostiveAdj();
+            String finalOutput = finalOutput.randomPostiveAdj();
+            while(currVal < finalOutput)
+            {
+              finalOutput = finalOutput.randomPostiveAdj();
+            }
           }
           else
           {
-            newWord = newWord.randomNegativeAdj();
+            finalOutput = newWord.randomNegativeAdj();
+            while(currVal < finalOutput)
+            {
+              finalOutput = finalOutput.randomNegativeAdj();
+            }
+            word = "";
           }
         }
-        else
-        {
-          i++
-        }
+      else
+      {
+        word += str;
       }
+      return finalOutput;
     }
-    
-    
-        
-          
-            
-        
-  
-  
   
   /**
    * @returns the sentiment value of word as a number between -1 (very negative) to 1 (very positive sentiment) 
